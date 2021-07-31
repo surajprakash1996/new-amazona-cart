@@ -1,0 +1,1 @@
+web: nodemon --experimental-modules back-end/server.js
