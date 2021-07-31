@@ -31,12 +31,12 @@ app.get("/config/paypal/client-id", (req, res) => {
   res.status(200).send(process.env.PAYPAL_CLIENT_ID || 'sb');
 })
 
-app.use(express.static(path.join(__dirname, '/../front-end/build')));
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/../front-end/build/index.html`));
-});
-
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/../front-end/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(`${__dirname}/../front-end/build/index.html`));
+  });
+}
 
 app.use((req, res, next) => {
   const error = new Error("Page not found");
