@@ -26,7 +26,7 @@ const CarouselSellerCardComponent = (props) => {
   return (
     <RouterLink style={{
         textDecoration:'none'
-    }}  to={`/seller/${seller._id}`}>
+    }}  to="/">
          <Box className={classes.avatar}>
             <Typography style={{
                 fontSize:'20px',
